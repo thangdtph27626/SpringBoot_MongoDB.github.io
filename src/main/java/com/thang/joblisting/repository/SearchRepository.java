@@ -1,6 +1,6 @@
 package com.telusko.joblisting.repository;
 
-import com.telusko.joblisting.model.Post;
+import com.telusko.joblisting.entity.Post;
 
 import java.util.List;
 

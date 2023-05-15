@@ -1,4 +1,4 @@
-package com.telusko.joblisting.model;
+package com.telusko.joblisting.entity;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,7 +9,6 @@ public class Post {
     private String profile;
     private String desc;
     private int exp;
-    private String techs[];
 
     public Post() {
     }
@@ -38,21 +37,4 @@ public class Post {
         this.exp = exp;
     }
 
-    public String[] getTechs() {
-        return techs;
-    }
-
-    public void setTechs(String[] techs) {
-        this.techs = techs;
-    }
-
-    @Override
-    public String toString() {
-        return "Post{" +
-                "profile='" + profile + '\'' +
-                ", desc='" + desc + '\'' +
-                ", exp=" + exp +
-                ", techs=" + Arrays.toString(techs) +
-                '}';
-    }
 }
