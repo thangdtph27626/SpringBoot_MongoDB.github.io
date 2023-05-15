@@ -37,5 +37,26 @@ chọn My Local Environment -> click Add My Current IP Address
 
 ## cấu trúc thư mục 
 
+![image](https://github.com/thangdtph27626/SpringBoot_MongoDB.github.io/assets/109157942/b381c494-d9ce-45ab-988a-4a02b1eee0e8)
 
+## Thêm phụ thuộc maven 
 
+```
+  <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+```
+
+##   Triển khai mô hình MongoDB
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
