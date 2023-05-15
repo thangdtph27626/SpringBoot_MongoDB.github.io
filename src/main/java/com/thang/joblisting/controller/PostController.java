@@ -1,14 +1,11 @@
-package com.telusko.joblisting.controller;
+package com.thang.joblisting.controller;
 
-import com.telusko.joblisting.repository.PostRepository;
-import com.telusko.joblisting.entity.Post;
-import com.telusko.joblisting.repository.SearchRepository;
+import com.thang.joblisting.repository.PostRepository;
+import com.thang.joblisting.entity.Post;
+import com.thang.joblisting.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.annotations.ApiIgnore;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -16,20 +13,20 @@ public class PostController
 {
 
     @Autowired
-    PostRepository repo;
+    private PostService postService;
 
 
     @GetMapping("/allPosts")
     public List<Post> getAllPosts()
     {
-        return repo.findAll();
+        return postService.getAllPosts();
     }
 
 
     @PostMapping("/post")
     public Post addPost(@RequestBody Post post)
     {
-        return repo.save(post);
+        return postService.addPost(post);
     }
 
 }

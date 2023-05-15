@@ -1,4 +1,4 @@
-package com.telusko.joblisting.entity;
+package com.thang.joblisting.entity;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
