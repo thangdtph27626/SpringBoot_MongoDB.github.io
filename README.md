@@ -53,10 +53,42 @@ chọn My Local Environment -> click Add My Current IP Address
 ```
 
 ##   Triển khai mô hình MongoDB
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+          
+Chúng ta có một lớp mô hình đơn giản Post.java
+
+```
+@Document(collection = "JobPost")
+public class Post {
+    private String profile;
+    private String desc;
+    private int exp;
+
+    public Post() {
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public int getExp() {
+        return exp;
+    }
+
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
+
+}
+```
