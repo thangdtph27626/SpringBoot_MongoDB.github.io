@@ -54,7 +54,7 @@ chọn My Local Environment -> click Add My Current IP Address
 
 ##   Triển khai mô hình MongoDB
           
-Chúng ta có một lớp mô hình đơn giản Post.java
+### Chúng ta có một lớp mô hình đơn giản Post.java
 
 ```
 @Document(collection = "JobPost")
@@ -92,3 +92,130 @@ public class Post {
 
 }
 ```
+
+- Chúng ta sử dụng chú thích @Document để đặt tên collection  sẽ được mô hình sử dụng. Nếu collection không tồn tại, MongoDB sẽ tạo nó.
+- @Document được sử dụng để ánh xạ một lớp tới cơ sở dữ liệu noSQL (cụ thể là mongoDB), nó đại diện cho một tài liệu MongoDB.
+
+### Triển khai API Spring Boot MongoDB 
+
+Việc triển khai API diễn ra trong kho lưu trữ. Nó hoạt động như một liên kết giữa mô hình và cơ sở dữ liệu và có tất cả các phương thức cho hoạt động CRUD.
+
+```
+public interface PostRepository extends MongoRepository<Post,String>{
+
+}
+```
+
+### Connect Mongodb
+
+Bây giờ, chúng ta đã sẵn sàng để tạo Ứng dụng Sping boot  của mình và chạy các phương thức để xem điều gì sẽ xảy ra.
+
+Để kết nối với MongoDB Atlas, chúng tôi chỉ định chuỗi kết nối trong tệp application.properties trong thư mục src/main/resource. Có thể tìm thấy chuỗi kết nối cho một cụm trong Giao diện người dùng Atlas . Không cần viết mã liên quan đến kết nối trong bất kỳ tệp nào khác. Spring Boot đảm nhận việc kết nối cơ sở dữ liệu cho chúng ta.
+chọn  connect -> Driver -> copy url tại  Add your connection string into your application code
+![image](https://github.com/thangdtph27626/SpringBoot_MongoDB.github.io/assets/109157942/c283ef77-a7a1-4fdc-9edf-26d582992b9a)
+![image](https://github.com/thangdtph27626/SpringBoot_MongoDB.github.io/assets/109157942/25dcbfd0-8d29-42b2-a80b-5997d68c3cad)
+![image](https://github.com/thangdtph27626/SpringBoot_MongoDB.github.io/assets/109157942/903aaa1d-4674-4905-a250-4782af586da7)
+
+cấu hình application 
+
+```
+spring.data.mongodb.uri=mongodb+srv://<username>:<pwd>@<cluster>.mongodb.net/<tenDabase>
+spring.data.mongodb.database=<tenDabase>
+
+spring.data.mongodb.uri=mongodb+srv://minigame:ejd2UGqNEHQm9aZz@cluster0.ptrpm.mongodb.net/?retryWrites=true&w=majority
+spring.data.mongodb.database=demo
+```
+
+### Service
+- PostService.class
+
+```
+public interface PostService {
+
+    List<Post> getAllPosts();
+
+    Post addPost(@RequestBody Post post);
+
+}
+```
+
+- PostServiceImpl.class
+
+```
+@Service
+public class PostServiceImpl implements PostService {
+
+    @Autowired
+    private PostRepository repo;
+
+    @Override
+    public List<Post> getAllPosts() {
+        return  repo.findAll();
+    }
+
+    @Override
+    public Post addPost(Post post) {
+        return repo.save(post);
+    }
+}
+
+```
+
+### Hiển thị Tất cả các bài viết và thêm mới bài viết 
+
+```
+@RestController
+public class PostController
+{
+
+    @Autowired
+    private PostService postService;
+
+
+    @GetMapping("/allPosts")
+    public List<Post> getAllPosts()
+    {
+        return postService.getAllPosts();
+    }
+
+
+    @PostMapping("/post")
+    public Post addPost(@RequestBody Post post)
+    {
+        return postService.addPost(post);
+    }
+
+}
+
+```
+
+### Chạy thử MongoDB 
+
+- Khi ứng dụng đang chạy, chúng tôi có thể thử lưu người dùng mới bằng cách sử dụng API này:
+ http://localhost:8080/post
+Vì đây sẽ là một yêu cầu POST nên chúng tôi cũng sẽ gửi dữ liệu JSON:
+
+```
+{
+    "profile":"324345345",
+    "desc": "jdfhkjshkjgfd",
+    "exp": 12
+}
+```
+
+Khi chúng tôi trả lại phản hồi Mongo, chúng tôi sẽ nhận được một cái gì đó như sau:
+
+![image](https://github.com/thangdtph27626/SpringBoot_MongoDB.github.io/assets/109157942/7e28de03-3ed3-408a-8dee-3ddb93560165)
+
+- Bạn có thể nhận được tất cả người dùng bằng cách sử dụng API dưới dạng yêu cầu GET:
+ http://localhost:8080/allPosts
+
+Chúng tôi sẽ lấy lại một cái gì đó như Sau:
+![image](https://github.com/thangdtph27626/SpringBoot_MongoDB.github.io/assets/109157942/323d3aa9-7d57-4b47-9ffa-e2b61138c69f)
+
+
+### MongoTemplate vs MongoRepository
+- MongoTemplate cung cấp nhiều quyền kiểm soát hơn khi truy vấn dữ liệu và lấy dữ liệu nào từ cơ sở dữ liệu.
+- Kho lưu trữ dữ liệu mùa xuân cung cấp cho chúng tôi triển vọng thuận tiện về cách tìm nạp dữ liệu.
+- MongoTemplate phụ thuộc vào cơ sở dữ liệu. Điều này có nghĩa là, với kho lưu trữ Dữ liệu Spring, bạn có thể dễ dàng chuyển sang một cơ sở dữ liệu khác hoàn toàn bằng cách sử dụng một kho lưu trữ Dữ liệu Spring khác cho MySQL hoặc Neo4J hoặc bất kỳ thứ gì khác. Điều này là không thể với MongoTemplate.
+
