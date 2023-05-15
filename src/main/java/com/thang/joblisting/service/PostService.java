@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 public interface PostService {
+
     List<Post> getAllPosts();
+
     Post addPost(@RequestBody Post post);
 
 }
