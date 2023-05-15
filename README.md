@@ -189,7 +189,7 @@ public class PostController
 
 ```
 
-### Chạy thử MongoDB 
+## Chạy thử MongoDB 
 
 - Khi ứng dụng đang chạy, chúng tôi có thể thử lưu người dùng mới bằng cách sử dụng API này:
  http://localhost:8080/post
@@ -214,8 +214,12 @@ Chúng tôi sẽ lấy lại một cái gì đó như Sau:
 ![image](https://github.com/thangdtph27626/SpringBoot_MongoDB.github.io/assets/109157942/323d3aa9-7d57-4b47-9ffa-e2b61138c69f)
 
 
-### MongoTemplate vs MongoRepository
+## MongoTemplate vs MongoRepository
 - MongoTemplate cung cấp nhiều quyền kiểm soát hơn khi truy vấn dữ liệu và lấy dữ liệu nào từ cơ sở dữ liệu.
 - Kho lưu trữ dữ liệu mùa xuân cung cấp cho chúng tôi triển vọng thuận tiện về cách tìm nạp dữ liệu.
 - MongoTemplate phụ thuộc vào cơ sở dữ liệu. Điều này có nghĩa là, với kho lưu trữ Dữ liệu Spring, bạn có thể dễ dàng chuyển sang một cơ sở dữ liệu khác hoàn toàn bằng cách sử dụng một kho lưu trữ Dữ liệu Spring khác cho MySQL hoặc Neo4J hoặc bất kỳ thứ gì khác. Điều này là không thể với MongoTemplate.
 
+## Kết thúc 
+
+Trong bài học này, chúng ta đã xem xét cách MongoTemplate có thể cung cấp cho chúng ta nhiều quyền kiểm soát hơn đối với kho lưu trữ Dữ liệu Spring nhưng cũng có thể hơi phức tạp khi có các truy vấn sâu hơn. Vì vậy, đây hoàn toàn là quyết định của bạn nên chọn gì khi bạn phát triển ý tưởng của mình
+link github https://github.com/thangdtph27626/SpringBoot_MongoDB
