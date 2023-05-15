@@ -9,3 +9,9 @@
 
 # Thiết lập mongodb
 
+- Bước 1: đăng ký tài khoản [mongodb](https://account.mongodb.com/account/login)
+- Bước 2: Tạo mới một project 
+![image](https://github.com/thangdtph27626/SpringBoot_MongoDB.github.io/assets/109157942/d510ff7f-4b91-401a-942a-a8b2bac7b44f)
+![image](https://github.com/thangdtph27626/SpringBoot_MongoDB.github.io/assets/109157942/53929f34-11a7-41fc-9fa5-4de60578fe83)
+![image](https://github.com/thangdtph27626/SpringBoot_MongoDB.github.io/assets/109157942/3a398f2f-8946-4c38-a815-217666ee5fbe)
+- Bước 3: Tạo một database 
