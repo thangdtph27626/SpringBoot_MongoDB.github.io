@@ -33,4 +33,9 @@ chọn My Local Environment -> click Add My Current IP Address
 
 ![image](https://github.com/thangdtph27626/SpringBoot_MongoDB.github.io/assets/109157942/3055383d-5488-40ec-a9c3-62f6243842b4)
 
+# Khởi tạo dự án spring boot và  MongoDB
+
+## cấu trúc thư mục 
+
+
 
